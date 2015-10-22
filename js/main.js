@@ -1,5 +1,9 @@
 import $ from 'jquery';
 import _ from 'underscore';
-import moment from 'moment';
+import Prey from './prey';
 
-console.log('Hello, World');
+// Prey Instance
+
+let penguin = new Prey();
+
+console.dir(penguin);
