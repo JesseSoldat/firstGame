@@ -25,7 +25,7 @@ import Prey from './prey';
       it('should lower the score, after getting hit', function() {
         x.hit();
         expect(x.health).to.be.below(100);
-      })
+      });
     });
 
   });
