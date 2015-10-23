@@ -1,19 +1,65 @@
-// import $ from 'jquery';
-// import _ from 'underscore';
-// import Prey from './prey';
+import $ from 'jquery';
+import _ from 'underscore';
+import Prey from './prey';
 
 // // Prey Instance
-
 // let penguin = new Prey();
 
+// //  let
+let border = $(".border");
+let startBtn = $(".start");
+let penguin = $("#penguin");
+let refresh;
 
-// let body = document.getElementsByTagName("body")[0],
-// let penguin = document.getElementById("penguin");
 
-// window.onload = function() {
+window.onload = function() {
+
+// // Event listeners
+// start the Prey
+startBtn.on( "click", function(e) {
+  console.log('start');
+  e.preventDefault();
+  refresh = setInterval(animatePrey, 500);
+});
+// stop the Prey
+penguin.on("click", function(e) {
+  console.log('stop');
+  e.preventDefault();
+  clearInterval(refresh);
+});
 
 
-// };
+function animatePrey() {
+console.log("animatePrey function");
+let position = penguin.position();
+
+console.log(position.left);
+console.log(position.top);
+
+if (position.top <= 100){
+
+  penguin.animate({
+    'left': '+=20px',
+    'top': '+=20px'
+  }, 500);
+} // end if
+
+else if (position.top >= 0) {
+  penguin.animate({
+  'left': '-=20px',
+  'top': '-=20px'
+  }, 500);
+
+} // end else if
+
+ 
+  
+} // animatePrey
+
+
+
+
+}; // window.onload
 
 
 
