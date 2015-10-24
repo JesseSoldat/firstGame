@@ -8,9 +8,113 @@ body {
   // position: relative;
   // overflow: hidden;
   h1 {
-    float: left;
+    width: 400px;
+    margin: 30px auto;
     font-size: 2em;
   }
+
+  a:link {
+    text-decoration: none;
+  }
+  a:visited {
+    text-decoration: none;
+  }
+  ul, li {
+    display: inline-block;
+    list-style: none;
+
+  }
+
+// INDEX.HTML ------------------------------------------
+ .tabWrapper{
+      margin-top: 50px;
+      width: 800px;
+      height: 500px;
+      margin: 0 auto;
+    }
+
+    ul.tabs{
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+    }
+    ul.tabs li{
+      background: none;
+      color: #222;
+      display: inline-block;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    ul.tabs li.current{
+      background: #ededed;
+      color: #222;
+    }
+
+    .tabContent{
+      display: none;
+      background: #ededed;
+      padding: 15px;
+    }
+
+    .tabContent.current{
+      display: inherit;
+      height: 500px;
+
+
+    }
+    #tab1 {
+      // position: relative;
+    }
+
+ //Tab for Penguin Game   
+.container {
+    width: 285px;
+    height: 420px;
+    margin:0px auto; 
+  }
+  
+  .penguin {
+   position: relative;
+   background: url(../img/redPenguin.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 185px;
+   height: 202px;
+   top: 0px;
+   animation: bot_float ease 2s infinite;
+  }
+
+  @keyframes bot_float { 
+    50% { top: 100px; } 
+    100% { top: 0px; } 
+  }
+
+  .shadow {
+    position: relative;
+    height: 16px;
+    background: #999;
+    opacity: 0.1;
+    border-radius: 100%;
+    margin: 0px 0px 0px 0px;
+    left: -50px;
+    top: 100px;
+    animation: shadowChange ease 2s infinite;
+  }
+  #flame {
+    background-image: url(../img/flame.gif);
+    width: 580px;
+    height: 100px;
+    z-index: 1000;
+    position: absolute;
+    left: 260px;
+    top: 510px;
+  }
+  
+
+  @keyframes shadowChange { 50% { margin:0px 20% 0px 20%; opacity:0.7; } 100% { margin:0px 0px 0px 0px; opacity:0.1;  } }
+  
+// PENGUIN.HTML-----------------------------------------  
   #title {
     background-color: white;
     border: 1px solid black;

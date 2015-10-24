@@ -15,25 +15,39 @@ var _prey = require('./prey');
 
 var _prey2 = _interopRequireDefault(_prey);
 
+// // INDEX PAGE
+// Tabs
+
+(0, _jquery2['default'])(document).ready(function () {
+
+  (0, _jquery2['default'])('ul.tabs li').click(function () {
+    var tab_id = (0, _jquery2['default'])(this).attr('data-tab');
+
+    (0, _jquery2['default'])('ul.tabs li').removeClass('current');
+    (0, _jquery2['default'])('.tabContent').removeClass('current');
+
+    (0, _jquery2['default'])(this).addClass('current');
+    (0, _jquery2['default'])("#" + tab_id).addClass('current');
+  });
+});
+
+// PENGUIN GAME
 // // Prey Instance
 var penguin1 = new _prey2['default']();
 
 // //  let
-
 var border = (0, _jquery2['default'])(".border");
 var start = (0, _jquery2['default'])(".start");
 var penguin = (0, _jquery2['default'])("#penguin");
 var refresh = undefined;
 
 window.onload = function () {
-
   // // Event listeners
   // start the Prey
   start.on("click", function (e) {
     console.log('start');
     e.preventDefault();
     (0, _jquery2['default'])("#blackWrap").offset({ top: 650, left: 100 });
-
     // refresh = setInterval(animatePrey, 500);
   });
   // stop the Prey
@@ -42,72 +56,7 @@ window.onload = function () {
     e.preventDefault();
     // clearInterval(refresh);
   });
-
-  // function animatePrey() {
-  //   console.log("animatePrey function");
-  //   let position = penguin.position();
-
-  //   // console.log(position.left);
-  //   console.log(position.top);
-  //   console.log(penguin1.verticalDir);
-
-  //   if (penguin1.verticalDir === "down")
-  //   if (position.top <= 100){
-
-  //     penguin.animate ({
-  //       // 'left': '+=20px',
-  //       'top': '+=20px'
-  //     }, 500);
-  //     penguin1.verticalDir = "down";
-  //   } // end if
-
-  //   else if (position.top >= 0) {
-
-  //       penguin.animate ({
-  //       // 'left': '-=20px',
-  //       'top': '-=20px'
-  //       }, 500);
-
-  //       penguin1.verticalDir = "up";
-
-  //   } // end else if
-  // } // animatePrey
 }; // window.onload
-
-// // // DOM Nodes Selected
-// // let ggHealth = $('.ggHealth');
-// // let bgHealth = $('.bgHealth');
-
-// // let ggAttack = $('.ggAttack');
-
-// // // Show current (default) health
-// // ggHealth.text(mario.health);
-// // bgHealth.text(bowser.health);
-
-// // // Setting up ON Events
-// // ggAttack.on('click', function () {
-
-// //   // Generate a random amount of hit points
-// //   // Then attack!!!
-// //   let num = _.random(0, 25);
-// //   bowser.hit(num);
-
-// //   if (bowser.health <= 0) {
-// //     bgHealth.text('Defeated');
-// //     alert('Mario Wins!!')
-// //   } else {
-// //     bgHealth.text(bowser.health);
-// //     alert('Bowser Fights Back!!!');
-// //     mario.hit(10);
-// //     ggHealth.css('color', 'red');
-// //     ggHealth.text(mario.health);
-// //     setTimeout( function () {
-// //       ggHealth.css('color', 'black');
-// //     }, 1000);
-// //   }
-
-// //   console.log(bowser);
-// // });
 
 },{"./prey":2,"jquery":3,"underscore":4}],2:[function(require,module,exports){
 "use strict";
