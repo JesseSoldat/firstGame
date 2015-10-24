@@ -2027,20 +2027,21 @@ body {
     margin: 30px auto;
     font-size: 2em; }
   body h2 {
-    width: 300px;
-    font-size: 1.5em;
-    margin-left: 50px;
+    width: 450px;
+    font-size: 1.3em;
+    margin-left: 10px;
     margin-bottom: 0;
     position: absolute;
     background-color: white;
     border: 1px solid black;
-    border-radius: 2px;
+    border-radius: 3px;
     text-align: center;
-    padding: 15px 0; }
+    padding: 15px 5px; }
   body a:link {
     text-decoration: none; }
   body a:visited {
-    text-decoration: none; }
+    text-decoration: none;
+    color: #11ABFF; }
   body ul, body li {
     display: inline-block;
     list-style: none; }
@@ -2093,11 +2094,11 @@ body {
     padding: 15px; }
   body .tabContent.current {
     display: inherit;
-    height: 500px; }
+    height: 400px; }
   body .container {
     width: 285px;
     height: 420px;
-    margin: 0px auto; }
+    margin: 20px 500px; }
   body .penguin {
     position: relative;
     background: url(../img/redPenguin.png);
@@ -2125,11 +2126,11 @@ body {
     animation: shadowChange ease 2s infinite; }
   body #flame {
     background-image: url(../img/flame.gif);
-    width: 580px;
+    width: 780px;
     height: 100px;
     z-index: 1000;
     position: absolute;
-    left: 260px;
+    left: 210px;
     top: 510px; }
 
 @keyframes shadowChange {
