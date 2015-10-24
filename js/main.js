@@ -1,13 +1,14 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import Prey from './prey';
-
+ 
 // // Prey Instance
-// let penguin = new Prey();
+let penguin1 = new Prey();
 
 // //  let
+
 let border = $(".border");
-let startBtn = $(".start");
+let start = $(".start");
 let penguin = $("#penguin");
 let refresh;
 
@@ -16,48 +17,53 @@ window.onload = function() {
 
 // // Event listeners
 // start the Prey
-startBtn.on( "click", function(e) {
+start.on( "click", function(e) {
   console.log('start');
   e.preventDefault();
-  refresh = setInterval(animatePrey, 500);
+  $("#blackWrap").offset({ top: 650, left: 100 });
+
+
+  // refresh = setInterval(animatePrey, 500);
 });
 // stop the Prey
 penguin.on("click", function(e) {
   console.log('stop');
   e.preventDefault();
-  clearInterval(refresh);
+  // clearInterval(refresh);
 });
 
 
-function animatePrey() {
-console.log("animatePrey function");
-let position = penguin.position();
+// function animatePrey() {
+//   console.log("animatePrey function");
+//   let position = penguin.position();
 
-console.log(position.left);
-console.log(position.top);
+//   // console.log(position.left);
+//   console.log(position.top);
+//   console.log(penguin1.verticalDir);
 
-if (position.top <= 100){
+//   if (penguin1.verticalDir === "down")
+//   if (position.top <= 100){
+    
 
-  penguin.animate({
-    'left': '+=20px',
-    'top': '+=20px'
-  }, 500);
-} // end if
+//     penguin.animate ({
+//       // 'left': '+=20px',
+//       'top': '+=20px'
+//     }, 500);
+//     penguin1.verticalDir = "down";
+//   } // end if
 
-else if (position.top >= 0) {
-  penguin.animate({
-  'left': '-=20px',
-  'top': '-=20px'
-  }, 500);
+//   else if (position.top >= 0) {
 
-} // end else if
+//       penguin.animate ({
+//       // 'left': '-=20px',
+//       'top': '-=20px'
+//       }, 500);
 
- 
+//       penguin1.verticalDir = "up";
+
   
-} // animatePrey
-
-
-
+//   } // end else if 
+// } // animatePrey
 
 }; // window.onload
 
