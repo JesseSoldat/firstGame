@@ -2020,12 +2020,23 @@
 
 body {
   margin-top: 40px;
-  background: #e2ebf3;
+  background: #94D3F0;
   width: 1200px; }
   body h1 {
     width: 400px;
     margin: 30px auto;
     font-size: 2em; }
+  body h2 {
+    width: 300px;
+    font-size: 1.5em;
+    margin-left: 50px;
+    margin-bottom: 0;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+    text-align: center;
+    padding: 15px 0; }
   body a:link {
     text-decoration: none; }
   body a:visited {
@@ -2033,6 +2044,31 @@ body {
   body ul, body li {
     display: inline-block;
     list-style: none; }
+  body #banner {
+    width: 1000px;
+    height: 100px;
+    margin: 0px auto;
+    border: solid 1px black;
+    overflow: hidden; }
+  body #bannerBackdrop {
+    position: relative;
+    background: url(../img/coldSteel.jpg) repeat-x;
+    width: 1320px;
+    height: 200px;
+    animation: backdrop_roll linear 12s infinite; }
+
+@keyframes backdrop_roll {
+  from {
+    right: 0px; }
+  to {
+    right: 300px; } }
+  body #bannerContent {
+    position: relative;
+    height: 160px;
+    margin: 20px 20px;
+    top: -220px; }
+  body #bannerContent img {
+    width: 280px; }
   body .tabWrapper {
     margin-top: 50px;
     width: 800px;

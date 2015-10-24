@@ -33,27 +33,42 @@ var _prey2 = _interopRequireDefault(_prey);
 
 // PENGUIN GAME
 // // Prey Instance
-var penguin1 = new _prey2['default']();
+var penguin1 = new _prey2['default'](100, "Bear Killer Mcgraw");
+console.dir(penguin1);
 
 // //  let
 var border = (0, _jquery2['default'])(".border");
 var start = (0, _jquery2['default'])(".start");
-var penguin = (0, _jquery2['default'])("#penguin");
+var penguin = (0, _jquery2['default'])(".box");
 var refresh = undefined;
+//-------------------------------------------
+//Penguin Object/Health Property Displayed on Screen
+var healthPrey = (0, _jquery2['default'])('.healthPrey');
+healthPrey.text(penguin1.health);
 
+//-------------------------------------------
 window.onload = function () {
   // // Event listeners
   // start the Prey
   start.on("click", function (e) {
     console.log('start');
-    e.preventDefault();
     (0, _jquery2['default'])("#blackWrap").offset({ top: 650, left: 100 });
     // refresh = setInterval(animatePrey, 500);
   });
-  // stop the Prey
-  penguin.on("click", function (e) {
+  // Hit the Prey
+  penguin.on('click', function (e) {
     console.log('stop');
-    e.preventDefault();
+    healthPrey.css('color', 'red');
+    penguin1.hit();
+    healthPrey.text(penguin1.health);
+    setTimeout(function () {
+      healthPrey.css('color', 'black');
+    }, 1000);
+
+    if (penguin1.health === 0) {
+      console.log("You Win!");
+    }
+
     // clearInterval(refresh);
   });
 }; // window.onload
@@ -64,9 +79,10 @@ window.onload = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var Prey = function Prey() {
-  this.health = 100;
-  this.verticalDir = "down";
+var Prey = function Prey(health, title) {
+  this.health = health;
+  this.title = title;
+  // this.verticalDir = "down";
 
   this.hit = function (num) {
     var hitPoints = num || 10;

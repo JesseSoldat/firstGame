@@ -18,31 +18,44 @@ $(document).ready(function(){
 
 })
  
-
 // PENGUIN GAME 
 // // Prey Instance
-let penguin1 = new Prey();
+let penguin1 = new Prey(100, "Bear Killer Mcgraw");
+console.dir(penguin1);
 
 // //  let
 let border = $(".border");
 let start = $(".start");
-let penguin = $("#penguin");
+let penguin = $(".box");
 let refresh;
+//-------------------------------------------
+//Penguin Object/Health Property Displayed on Screen
+let healthPrey = $('.healthPrey');
+healthPrey.text(penguin1.health);
 
-
+//-------------------------------------------
 window.onload = function() {
 // // Event listeners
 // start the Prey
 start.on( "click", function(e) {
   console.log('start');
-  e.preventDefault();
   $("#blackWrap").offset({ top: 650, left: 100 });
   // refresh = setInterval(animatePrey, 500);
 });
-  // stop the Prey
-  penguin.on("click", function(e) {
+  // Hit the Prey
+  penguin.on('click', function(e) {
     console.log('stop');
-    e.preventDefault();
+    healthPrey.css('color', 'red');
+    penguin1.hit();
+    healthPrey.text(penguin1.health);
+    setTimeout(function(){
+      healthPrey.css('color', 'black');
+    }, 1000);
+
+    if (penguin1.health === 0) {
+      console.log("You Win!");
+    }
+
     // clearInterval(refresh);
   });
 }; // window.onload

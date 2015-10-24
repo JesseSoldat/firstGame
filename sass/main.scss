@@ -3,7 +3,9 @@
 
 body {
   margin-top: 40px;
-  background: #e2ebf3;
+  background: #94D3F0;
+
+
   width: 1200px;
   // position: relative;
   // overflow: hidden;
@@ -11,6 +13,18 @@ body {
     width: 400px;
     margin: 30px auto;
     font-size: 2em;
+  }
+  h2 {
+    width: 300px;
+    font-size: 1.5em;
+    margin-left: 50px;
+    margin-bottom: 0;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+    text-align: center;
+    padding: 15px 0;
   }
 
   a:link {
@@ -26,13 +40,42 @@ body {
   }
 
 // INDEX.HTML ------------------------------------------
+// Banner
+
+#banner{  //container for texture and logo
+    width: 1000px;
+    height: 100px;
+    margin: 0px auto;
+    border: solid 1px black;
+    overflow: hidden;
+}
+#bannerBackdrop{ //moving texture 
+    position: relative;
+    background: url(../img/coldSteel.jpg) repeat-x;
+    width: 1320px;
+    height: 200px;
+    animation: backdrop_roll linear 12s infinite;
+}
+@keyframes backdrop_roll { from { right: 0px; } to { right: 300px; } }
+
+#bannerContent{ //container for logo
+    position: relative;
+    height: 160px;
+    margin: 20px 20px;
+    top: -220px;   
+}
+#bannerContent img { //logo
+    width: 280px;
+}
+// Tabs
  .tabWrapper{
       margin-top: 50px;
       width: 800px;
       height: 500px;
       margin: 0 auto;
-    }
 
+    }
+    
     ul.tabs{
       margin: 0px;
       padding: 0px;
@@ -60,7 +103,6 @@ body {
     .tabContent.current{
       display: inherit;
       height: 500px;
-
 
     }
     #tab1 {
