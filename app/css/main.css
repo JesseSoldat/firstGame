@@ -2141,6 +2141,31 @@ body {
   100% {
     margin: 0px 0px 0px 0px;
     opacity: 0.1; } }
+  body .march {
+    margin: 120px 0 0 0; }
+    body .march img {
+      border: 3px solid black;
+      border-radius: 3px; }
+  body #tab3 {
+    background-color: black;
+    position: relative; }
+  body .city {
+    margin: 0;
+    padding: 0;
+    width: 780px;
+    height: 400px;
+    background-image: url(../img/city2.jpg);
+    background-size: 100%, 70%;
+    background-repeat: no-repeat; }
+  body .spider {
+    position: absolute;
+    width: 200px;
+    height: 230px;
+    top: 160px;
+    left: 500px; }
+    body .spider img {
+      width: 100%;
+      height: 100%; }
   body #title {
     background-color: white;
     border: 1px solid black;
