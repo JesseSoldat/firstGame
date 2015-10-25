@@ -1,4 +1,6 @@
-let Prey = function(health, title) {
+//Constructor
+//-------------------------------------------------------------
+let Prey = function(health, title, num) {
   this.health = health;
   this.title = title;
   // this.verticalDir = "down";
@@ -7,8 +9,10 @@ let Prey = function(health, title) {
     let hitPoints = num || 10;
     return this.health = this.health - hitPoints;
   };
-};
+}; // End of Prey Constructor
 
 export default Prey;
 
+
+  
 

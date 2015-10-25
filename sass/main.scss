@@ -47,6 +47,7 @@ body {
     width: 1000px;
     height: 100px;
     margin: 0px auto;
+    margin-bottom: 20px;
     border: solid 1px black;
     overflow: hidden;
 }
@@ -116,17 +117,19 @@ body {
     height: 420px;
     margin: 20px 500px; 
   }
+ 
   
   .penguin {
-   position: relative;
-   background: url(../img/redPenguin.png);
-   background-size: contain;
-   background-repeat: no-repeat;
-   width: 185px;
-   height: 202px;
-   top: 0px;
-   animation: bot_float ease 2s infinite;
-  }
+     position: relative;
+     background: url(../img/redPenguin.png);
+     background-size: contain;
+     background-repeat: no-repeat;
+     width: 185px;
+     height: 202px;
+     top: 0px;
+     animation: bot_float ease 2s infinite;
+  } //end .penguin
+   
 
   @keyframes bot_float { 
     50% { top: 100px; } 
@@ -151,7 +154,7 @@ body {
     z-index: 1000;
     position: absolute;
     left: 210px;
-    top: 510px;
+    top: 529px;
   }
   
 
@@ -165,8 +168,8 @@ body {
     display: inline-block;
     width: 600px;
     margin: 0 auto;
-
   }
+
   button {
     display: block;
     float: right;
@@ -174,7 +177,6 @@ body {
     padding: 1%;
     border: 1px solid white;
     border-radius: 2px;
-
 
   }
   #blackWrap {
@@ -186,21 +188,9 @@ body {
     left: 100px;
     top: 300px;
     transition: all 1s;
-    
 
   }
 
-  .move {
-    
-  }
-
-  #army {
-    float: right;
-    z-index: 1000;
-    padding: 2%;
-  
-
-  }
   #wanted {
     float: left;
     z-index: 1000;
@@ -227,7 +217,56 @@ body {
     border: 2px solid black;
     border-radius: 2px;
 
-  //   .border {
+  
+ } // end of .gameWrapper 
+
+ .box {
+  width: 1000px;
+  height: 260px;
+  top: 60%;
+  position: relative;
+  overflow: hidden;
+  }
+  #clicker {
+   width: 120px;
+   height: 120px;
+   z-index: 900;
+  }
+ 
+  #clicker img {
+  // display: block;
+  width: 50%;
+  z-index: 300;
+  
+  background-color: none;
+  position: relative;
+  animation: moveX 2s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  }
+
+  @keyframes moveX {
+  from { left: 0; } to { left: 1000px; }
+  }
+  @keyframes moveY {
+  from { top: 0; } to { top: 180px; }
+
+  } 
+  #penguin2 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+
+    img { 
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+} // end of body
+
+
+//   .border {
   //     position: relative;
   //     width: 1000px;
   //     height: 210px;
@@ -249,35 +288,3 @@ body {
   //     height: 100%;
   //   }
   // } // end of borders
- } // end of .gameWrapper 
-
- .box {
-  width: 1000px;
-  height: 260px;
-  top: 60%;
-  position: relative;
-  overflow: hidden;
-}
-
-.box b img {
-  display: block;
-  width: 80px;
-  height: 80px;
-  background-color: none;
- 
-  position: absolute;
-  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  
-  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  }
-
-  @-webkit-keyframes moveX {
-  from { left: 0; } to { left: 1000px; }
-  }
-  @-webkit-keyframes moveY {
-  from { top: 0; } to { top: 180px; }
-
-
-  } 
-
-} // end of body

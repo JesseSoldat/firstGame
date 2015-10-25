@@ -17,6 +17,7 @@ var _prey2 = _interopRequireDefault(_prey);
 
 // // INDEX PAGE
 // Tabs
+//-----------------------------------------------------
 
 (0, _jquery2['default'])(document).ready(function () {
 
@@ -31,55 +32,239 @@ var _prey2 = _interopRequireDefault(_prey);
   });
 });
 
-// PENGUIN GAME
+// PENGUIN GAME 1
+//------------------------------------------------------
 // // Prey Instance
 var penguin1 = new _prey2['default'](100, "Bear Killer Mcgraw");
-console.dir(penguin1);
+// console.dir(penguin1);
 
 // //  let
 var border = (0, _jquery2['default'])(".border");
 var start = (0, _jquery2['default'])(".start");
-var penguin = (0, _jquery2['default'])(".box");
-var refresh = undefined;
+// let clicker = $(".box");
+// let penguinImg = $('#clicker:first-child');
+
+// let refresh;
 //-------------------------------------------
 //Penguin Object/Health Property Displayed on Screen
 var healthPrey = (0, _jquery2['default'])('.healthPrey');
 healthPrey.text(penguin1.health);
 
 //-------------------------------------------
-window.onload = function () {
-  // // Event listeners
-  // start the Prey
-  start.on("click", function (e) {
-    console.log('start');
-    (0, _jquery2['default'])("#blackWrap").offset({ top: 650, left: 100 });
-    // refresh = setInterval(animatePrey, 500);
-  });
-  // Hit the Prey
-  penguin.on('click', function (e) {
-    console.log('stop');
-    healthPrey.css('color', 'red');
-    penguin1.hit();
-    healthPrey.text(penguin1.health);
-    setTimeout(function () {
-      healthPrey.css('color', 'black');
-    }, 1000);
 
-    if (penguin1.health === 0) {
-      console.log("You Win!");
+// // Event listeners
+// start the Prey
+start.on("click", function (e) {
+  console.log('start');
+  (0, _jquery2['default'])("#blackWrap").offset({ top: 650, left: 100 });
+  // refresh = setInterval(animatePrey, 500);
+});
+
+// Hit the Prey
+//-------------------------------------------
+//DOES NOT WORK YET
+// penguin.on('click', function(e) {
+//   console.log('stop');
+//   // let location = penguin.offset();
+//   // console.dir(location);
+//   // let mouseX = event.pageX;
+//   // let mouseY = event.pageY;
+//   // console.dir(mouseX);
+//   // console.dir(mouseY);
+
+//   healthPrey.css('color', 'red');
+//   penguin1.hit();
+//   healthPrey.text(penguin1.health);
+//   setTimeout(function(){
+//     healthPrey.css('color', 'black');
+//   }, 1000);
+
+//   if (penguin1.health === 0) {
+//     console.log("You Win!");
+//   }
+
+//   // clearInterval(refresh);
+// });
+
+//---------------------------------------------------------
+
+//Penguin GAME 2
+
+var penguin2 = new _prey2['default'](200, "Bear Killer Mcgill");
+// console.dir(penguin2);
+
+//DOM ELEMENTS
+//------------------------------------------------------------
+var box = (0, _jquery2['default'])('#box2');
+var $pen = (0, _jquery2['default'])('#penguin2');
+var $start = (0, _jquery2['default'])('#start2');
+var boxWidth = (0, _jquery2['default'])(box).width(); // Horizontal Box 1000
+var penRightBorder = boxWidth - 75; //Penguin Right Border 925
+// console.log(penRightBorder);
+var penLeftBorder = 0; //Penguin Left Border
+
+var latDirection = 'right'; //Penguin goes right first
+
+//Find the X/Y Cordinates
+//---------------------------------------------------------------
+// let $offset = $pen.offset(); //Gives current position of an element relative to the document
+// console.log($offset);
+var $position2 = $pen.position(); //Gives the current position of its PARENT
+// console.log($position2);
+var $pY2 = $position2.top; //Give the current TOP position of its PARENT
+// console.log('Top: '+ $pY2);
+var $pX2 = $position2.left; //Give the current LEFT position of its PARENT
+// console.log('Left: '+ $pX2);
+
+// Functions
+//-------------------------------------------------------------
+// After user clicks the start button this function occurs
+// function start() {
+//    setInterval( function(){
+//       animatePenguin();
+//    }, 10);
+// }
+// Choose the Direction to Move
+//-------------------------------------------------------------
+function animatePenguin() {
+  //User click the button to start this function
+  if (latDirection === 'right') {
+    //Checks the Penguins Direction
+    animateRight(); // Direction is Right
+  } else {
+      animateLeft(); // Direction is Left
     }
+};
 
-    // clearInterval(refresh);
+// Move RIGHT
+//-------------------------------------------------------------
+function animateRight() {
+  //Move Right
+  $pen.animate({
+    left: "+=5"
+  }, // top: "+=20"
+  10, function () {
+
+    var $position2 = $pen.position(); // Get current position each time the function is run
+    // let $pY2 = $position2.top;
+    // console.log('Top: '+ $pY2);
+    var $pX2 = $position2.left;
+    // console.log('Left: '+ $pX2);
+
+    if ($pY2 >= 368 || $pX2 >= penRightBorder) {
+      // If the penguins Left Position is greater than or equal to 925 do the following
+      reverse('left'); // Call the reverse function with a parameter of left
+      //console.log('I have returned'); // After reverse function RETURNS   
+      latDirection = 'left'; // Set Penguins direction to LEFT so that the next time animatePenguin() is called the Penguin will use the animateLeft() 
+      // console.log(latDirection);
+    } // End of If
+  }); // END of anonymous function
+} // END of animateRight()
+
+// Move LEFT
+//-------------------------------------
+function animateLeft() {
+  // Move Left
+  $pen.animate({
+    left: "-=5"
+  }, // top: "-=20"
+  10, function () {
+
+    var $position2 = $pen.offset();
+    // let $pY2 = $position2.top;
+    // console.log('Top: '+ $pY2);
+    var $pX2 = $position2.left;
+    // console.log('Left: '+ $pX2);
+    // I removed the $pY2 condition for now because we aren't yet worried about a valid Y movement,
+    // but that needs to be added back.
+    if ($pX2 <= penLeftBorder) {
+      reverse('right');
+      // console.log('I have returned');   
+      latDirection = 'right';
+      // console.log(latDirection);
+    } //END If
+  }); // END of anonymous function
+} //END of animateLeft()
+
+// REVERSE the direction ONE time before returning to the function that called ME
+//-----------------------------------------------------------
+function reverse(direction) {
+  if (direction === 'left') {
+    //Checks the Penguins direction if Left was given as a parameter then move -50
+    // console.log("Reverse Me LEFT");
+    $pen.animate({
+      left: "-=5"
+    }, 10);
+  } else {
+    // If Right was given as a parameter then go +50
+    // console.log("Reverse Me RIGHT");
+    $pen.animate({
+      left: "+=5"
+    }, 10);
+  }
+}
+window.onload = function () {
+  // User can not start click until everything is loaded
+  // console.log('Ready or Not!');
+
+  $start.on('click', function () {
+    // User clicks to start the game
+    // console.log('pushed button');
+    animatePenguin(); // Calls a function that will either call the animateRight or animateLeft function
+    // start();
+
+    // take away health
+    $pen.on('click', function () {
+      // When user clicks on the Penguin
+      // console.log('clicked');
+      penguin2.hit(); // A function in the Penguin Object that subtracts a number from 100 (Penguin's total health)
+      // console.log(penguin.health);
+    });
   });
-}; // window.onload
+
+  // Checks the Position where the user CLICKED in the BOX
+  box.click(function (e) {
+    var mouseX = e.pageX - this.offsetLeft; // HORIZONTAL POSITION of this (what was clicked on)
+    // console.log("Mouse Horizontal: " + mouseX);
+    var mouseY = e.pageY - this.offsetTop; // VERTICAL POSITION of this (what was clicked on)
+    // console.log("Mouse Vertical: " + mouseY);
+
+    // console.log("Penguin Horizontal: " + $pX2);
+    // console.log("Penguin Vertical : " + $pY2);
+    // Get the current Penguin's Position
+    var $position2 = $pen.position(); //Gives the current position of its PARENT
+    // console.log($position2);
+    var $pY2 = $position2.top; //Give the current TOP position of its PARENT
+    // console.log('Top: '+ $pY2);
+    var $pX2 = $position2.left; //Give the current LEFT position of its PARENT
+    // console.log('Left: '+ $pX2);
+
+    // Get the Penguin's Left and Right Borders
+    var penguinLeft = $pX2 + 15;
+    var penguinRight = $pX2 + 75;
+    // console.log("Right Border: " + penguinRight);
+    // console.log("Left Border: " + penguinLeft);
+    // Get the Penguin's Top and Bottom Borders
+    var penguinTop = $pY2 + 90; //BOTTOM
+    var penguinBottom = $pY2 - 0; //TOP
+    // console.log("Top Border: " + penguinTop);
+    // console.log("Bottom Border: " + penguinBottom);
+    // Check to see if the user clicked within the Penguin's Left and Right borders
+    if (mouseX > penguinLeft && mouseX < penguinRight && mouseY < penguinTop && mouseY > penguinBottom) {
+      console.log("You clicked ME!");
+    }
+  });
+}; // END of ONLOAD
 
 },{"./prey":2,"jquery":3,"underscore":4}],2:[function(require,module,exports){
+//Constructor
+//-------------------------------------------------------------
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var Prey = function Prey(health, title) {
+var Prey = function Prey(health, title, num) {
   this.health = health;
   this.title = title;
   // this.verticalDir = "down";
@@ -88,7 +273,7 @@ var Prey = function Prey(health, title) {
     var hitPoints = num || 10;
     return this.health = this.health - hitPoints;
   };
-};
+}; // End of Prey Constructor
 
 exports["default"] = Prey;
 module.exports = exports["default"];
