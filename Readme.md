@@ -1,3 +1,5 @@
-## Welcome to My Repo
+In this assignment we were tasked with creating a game using Constructors and Prototypes.  
 
-> I am your Readme.md file, you should probably update me.
+Java Script / jQuery / CSS / HTML
+
+http://penguingame.surge.sh/
